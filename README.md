@@ -1,6 +1,7 @@
 #dotfile list
 ~/.tmux.conf
 ~/.tmux-powerlinerc
+~/tmux-powerline/themes/mytheme.sh
 
 $HOME___.zsh
         |  |

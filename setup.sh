@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ln -s $HOME/dotfiles/mytheme.sh ~/tmux-powerline/themes/mytheme.sh
+
 DOT_FILES=(.tmux.conf .tmux-powerlinerc)
 for file in ${DOT_FILES[@]}
 do
