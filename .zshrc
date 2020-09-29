@@ -10,6 +10,20 @@ eval "$(pyenv init -)"
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 
+#ヤンクしたものをクリップボードに貼り付ける
+function vi-yank-xclip {
+    zle vi-yank
+    echo "$CUTBUFFER" | pbcopy -i
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
+function paste-as-yank {
+    pbpaste
+}
+zle -N paste-as-yank
+bindkey -M vicmd 'p' paste-as-yank
+
 # 入力コマンドが存在しない場合cdを使わず移動する
 setopt auto_cd
 
