@@ -1,10 +1,15 @@
 export PATH="/usr/local/bin:$PATH" export PATH=$PATH:~/.cache/sourcekit-lsp/.build/release/
-export PATH=$PATH:~/.nodebrew/current/bin
-export PATH=$PATH:~/flutter/bin
-export PATH=$PATH:~/.pyenv/versions/anaconda3-5.3.1/bin
+export PATH=$PATH:$HOME/.nodebrew/current/bin
+export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/.pyenv/versions/anaconda3-5.3.1/bin
+export PATH=$PATH:$HOME/.pyenv
+export PATH=$PATH:$HOME/command
+
+export PYENV_ROOT="$HOME/.pyenv"
 
 
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # vimライクな操作方法
 bindkey -v
