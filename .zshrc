@@ -1,20 +1,23 @@
-export PATH="/usr/local/bin:$PATH" export PATH=$PATH:~/.cache/sourcekit-lsp/.build/release/
+export PATH="/usr/local/bin:$PATH"
+export PATH=$PATH:~/.cache/sourcekit-lsp/.build/release/
 export PATH=$PATH:$HOME/.nodebrew/current/bin
 export PATH=$PATH:$HOME/flutter/bin
+export PATH="/usr/bin:$PATH"
 export PATH=$PATH:$HOME/.pyenv/versions/anaconda3-5.3.1/bin
 export PATH=$PATH:$HOME/.pyenv
 export PATH=$PATH:$HOME/command
 
 export PYENV_ROOT="$HOME/.pyenv"
+export PATH=$PATH:$PYENV_ROOT/bin
 
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+
 # vimライクな操作方法
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
-
 #ヤンクしたものをクリップボードに貼り付ける
 function vi-yank-xclip {
     zle vi-yank
@@ -51,8 +54,24 @@ autoload -U colors
 colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
+# 括弧の対応
+setopt auto_param_keys
+
+# ファイル名の展開でディレクトリにマッチした場合　末尾に/ を付加
+setopt mark_dirs
+
+# コマンドラインすべてのスペルチェックをする
+setopt correct_all
+
+# 他のターミナルとヒストリーを共有
+setopt share_history
+setopt hist_ignore_all_dups
+
+#ヒストリを呼び出してから実行する間に一旦編集できる状態になる
+setopt hist_verify
+
 #起動と同時にtmuxを起動
-[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux -u
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zsh/.zinit/bin/zinit.zsh ]]; then
@@ -82,4 +101,3 @@ zinit light sindresorhus/pure
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 zinit light zdharma/history-search-multi-word
-
