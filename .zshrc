@@ -1,19 +1,15 @@
 export PATH="/usr/local/bin:$PATH"
-export PATH=$PATH:~/.cache/sourcekit-lsp/.build/release/
-export PATH=$PATH:$HOME/.nodebrew/current/bin
-export PATH=$PATH:$HOME/flutter/bin
 export PATH="/usr/bin:$PATH"
-export PATH=$PATH:$HOME/.pyenv/versions/anaconda3-5.3.1/bin
 export PATH=$PATH:$HOME/.pyenv
 export PATH=$PATH:$HOME/command
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH=$PATH:$PYENV_ROOT/bin
+export PATH=$PATH:$PYENV_ROOT/shims
 
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
 
 # vimライクな操作方法
 bindkey -v
@@ -43,6 +39,10 @@ setopt PUSHD_IGNORE_DUPS
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias vim='nvim' 
+alias open='xdg-open'
+alias grep='ls -a |grep'
+alias pbcopy='xclip -selection c'
+alias pbpaste='xclip -selection c -o'
 #大文字小文字を無視して補完する
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #補完機能をタブとエンターとカーソルを有効にする
@@ -66,6 +66,10 @@ setopt correct_all
 # 他のターミナルとヒストリーを共有
 setopt share_history
 setopt hist_ignore_all_dups
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt EXTENDED_HISTORY
 
 #ヒストリを呼び出してから実行する間に一旦編集できる状態になる
 setopt hist_verify
